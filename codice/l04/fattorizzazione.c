@@ -19,7 +19,7 @@ main() {
       // inizializzo il flag
       ha_divisori = 0;
       // per i che va da 2 a d-1
-      for (i = 2; ha_divisori == 0 && i <= d - 1; i++)
+      for (i = 2; ha_divisori == 0 && i * i <= d; i++)
         // se i divide d
         if (d % i == 0)
           // attivo il flag
@@ -33,10 +33,15 @@ main() {
         while (quoziente % d == 0) {
           quoziente = quoziente / d;
           esponente++;
-        }        
+        }
 
-        printf("%d^%d\n", d, esponente);
+        printf("%d", d);
+        if (esponente > 1)
+          printf("^%d", esponente);
+        if (quoziente > 1)
+          printf(" x ");
       }
     }
   }
+  printf("\n");
 }
