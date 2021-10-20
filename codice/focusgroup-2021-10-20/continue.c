@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+
 main() {
   int pin;
   int corretto;     // flag di correttezza del pin inserito
