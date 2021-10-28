@@ -1,18 +1,12 @@
 #include <stdio.h>
 
-float potenza(float base, int esp) {
-  int cont;
-  float prod = 1;
-
-  if (esp >= 0) {
-    for (cont = 0; cont < esp; cont++)
-      prod *= base;
-    return prod;
-  } else {
-    for (cont = esp; cont < 0; cont++)
-      prod /= base;
-    return prod;
-  }
+float potenza(int base, int esp) {
+  int cont, prod = 1;
+  if (esp < 0)
+    return 1 / potenza(base, -esp);
+  for (cont = 0; cont < esp; cont++)
+    prod *= base;
+  return prod;
 }
 
 int main() {
