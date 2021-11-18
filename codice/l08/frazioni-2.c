@@ -35,9 +35,13 @@ Frazione leggiFrazione(void) {
   ;
 }
 
-void stampaFrazionaria(Frazione f) {
-  printf("%d/%d", f.num, f.den);
+Frazione somma(Frazione f1, Frazione f2) {
+  return frazione(f1.num * f2.den + f1.den * f2.num, f1.den * f2.den);
 }
+
+// void stampaFrazionaria(Frazione f) {
+//   printf("%d/%d", f.num, f.den);
+// }
 
 void stampaDecimale(Frazione f) {
   printf("%f", (float)f.num / f.den);
@@ -46,8 +50,8 @@ void stampaDecimale(Frazione f) {
 int main() {
   Frazione f1, f2;
 
-  f1 = frazione(-4, 6);
-  // f2 = leggiFrazione();
+  f1 = frazione(4, 6);
+  f2 = frazione(1,5);
   stampaFrazionaria(f1);
   printf("\n");
   stampaDecimale(f1);
