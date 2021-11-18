@@ -3,12 +3,13 @@
 #include <time.h>
 //#include <string.h>
 
-char lettera_minuscola_casuale() {
-  return 97 + rand() % (122 - 97 + 1);
+int rnd_int(int a, int b) {
+  return a + rand() % (b - a + 1);
 }
 
 int main() {
-  char s[37] = "https://meet.google.com/";
+  char s[37] = "https://meet.google.com/xxx-xxxx-xxx";
+  int i;
 
   srand(time(NULL));
 
@@ -16,19 +17,9 @@ int main() {
   // char s[37];
   // strcpy(s, "https://meet.google.com");
 
-  s[24] = lettera_minuscola_casuale();
-  s[25] = lettera_minuscola_casuale();
-  s[26] = lettera_minuscola_casuale();
-  s[27] = '-';
-  s[28] = lettera_minuscola_casuale();
-  s[29] = lettera_minuscola_casuale();
-  s[30] = lettera_minuscola_casuale();
-  s[31] = lettera_minuscola_casuale();
-  s[32] = '-';
-  s[33] = lettera_minuscola_casuale();
-  s[34] = lettera_minuscola_casuale();
-  s[35] = lettera_minuscola_casuale();
-  s[36] = '\0'; // s[36] = 0;
-
+  for (i = 24; i <= 35; i++)
+    if (s[i] == 'x')
+      s[i] = rnd_int('a', 'z');
+  
   printf("%s\n", s);
 }
