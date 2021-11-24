@@ -35,13 +35,9 @@ Frazione leggiFrazione(void) {
   ;
 }
 
-Frazione somma(Frazione f1, Frazione f2) {
-  return frazione(f1.num * f2.den + f1.den * f2.num, f1.den * f2.den);
+void stampaFrazionaria(Frazione f) {
+  printf("%d/%d", f.num, f.den);
 }
-
-// void stampaFrazionaria(Frazione f) {
-//   printf("%d/%d", f.num, f.den);
-// }
 
 void stampaDecimale(Frazione f) {
   printf("%f", (float)f.num / f.den);
