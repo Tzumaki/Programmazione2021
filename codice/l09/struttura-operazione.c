@@ -6,6 +6,13 @@ typedef struct {
   int den;
 } Frazione;
 
+typedef enum { add, sot, mol, quo } Operatore;
+
+typedef struct {
+  Operatore op;
+  Frazione f1, f2;
+} Operazione;
+
 int MCD(int a, int b) {
   while (a != b)
     if (a > b)
@@ -41,12 +48,62 @@ void stampaFrazione(Frazione* pf) {
 }
 
 void leggiFrazione(Frazione* pf) {
+  // sintassi: 2/3  oppure 2 / 3
   int n, d;
-  // leggo numeratore e denominatore
-  scanf("%d%d", &n, &d);
+  char c;
+  // leggo numeratore
+  scanf("%d", &n);
+
+  c = leggiCarattere();
+  if (c != '/') {
+    printf("Errore di sintassi\n");
+    exit(2);
+  }
+
+  // leggo il denominatore
+  scanf("%d", &d);
   // inizializzo la Frazione all'indirizzo pf chiamando frazione
   // scanf("%d%d", &pf->num, &pf->den);
   frazione(n, d, pf);
+}
+
+char leggiCarattere(void) {
+  char c;
+  do {
+    scanf("%c", &c);
+  } while (c == ' ');
+
+  return c;
+}
+
+void leggiOperazione(Operazione* po) {
+  char c;
+  // lettura primo operando
+  leggiFrazione(&(po->f1));
+  // lettura operatore
+
+  c = leggiCarattere();
+
+  switch (c) {
+    case '+':
+      po->op = add;
+      break;
+    case '-':
+      po->op = sot;
+      break;
+    case '*':
+      po->op = mol;
+      break;
+    case '/':
+      po->op = quo;
+      break;
+    default:
+      printf("%c non è un operatore\n");
+      exit(3);
+  }
+
+  // lettura secondo operando
+  leggiFrazione(&(po->f2));
 }
 
 void somma(Frazione f1, Frazione f2, Frazione* pf) {
@@ -66,21 +123,10 @@ void quoziente(Frazione f1, Frazione f2, Frazione* pf) {
 }
 
 int main() {
-  Frazione g1, g2, g3;
-  leggiFrazione(&g1);
-  leggiFrazione(&g2);
-  somma(g1, g2, &g3);
-  stampaFrazione(&g3);
-  printf("\n");
-  differenza(g1, g2, &g3);
-  stampaFrazione(&g3);
-  printf("\n");
-  prodotto(g1, g2, &g3);
-  stampaFrazione(&g3);
-  printf("\n");
-  quoziente(g1, g2, &g3);
-  stampaFrazione(&g3);
-  printf("\n");
-  printf("\n");
+  Operazione o;
+  Frazione ris;
+  leggiOperazione(&o);
+  // valuta(... o... ris...);
+  // stampa(&ris);
   return 0;
 }
