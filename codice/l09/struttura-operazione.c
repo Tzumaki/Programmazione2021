@@ -47,6 +47,15 @@ void stampaFrazione(Frazione* pf) {
   printf("%d/%d", pf->num, pf->den);
 }
 
+char leggiCarattere(void) {
+  char c;
+  do {
+    scanf("%c", &c);
+  } while (c == ' ');
+
+  return c;
+}
+
 void leggiFrazione(Frazione* pf) {
   // sintassi: 2/3  oppure 2 / 3
   int n, d;
@@ -65,15 +74,6 @@ void leggiFrazione(Frazione* pf) {
   // inizializzo la Frazione all'indirizzo pf chiamando frazione
   // scanf("%d%d", &pf->num, &pf->den);
   frazione(n, d, pf);
-}
-
-char leggiCarattere(void) {
-  char c;
-  do {
-    scanf("%c", &c);
-  } while (c == ' ');
-
-  return c;
 }
 
 void leggiOperazione(Operazione* po) {
@@ -122,11 +122,29 @@ void quoziente(Frazione f1, Frazione f2, Frazione* pf) {
   frazione(f1.num * f2.den, f1.den * f2.num, pf);
 }
 
+void valuta(Operazione* po, Frazione* pf) {
+  switch (po->op) {
+    case add:
+      somma(po->f1, po->f2, pf);
+      break;
+    case sot:
+      differenza(po->f1, po->f2, pf);
+      break;
+    case mol:
+      prodotto(po->f1, po->f2, pf);
+      break;
+    case quo:
+      quoziente(po->f1, po->f2, pf);
+      break;
+  }
+}
+
 int main() {
   Operazione o;
   Frazione ris;
   leggiOperazione(&o);
-  // valuta(... o... ris...);
-  // stampa(&ris);
+  valuta(&o, &ris);
+  stampaFrazione(&ris);
+  printf("\n");
   return 0;
 }
