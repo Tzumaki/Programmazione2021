@@ -98,7 +98,7 @@ void leggiOperazione(Operazione* po) {
       po->op = quo;
       break;
     default:
-      printf("%c non è un operatore\n");
+      printf("%c non è un operatore\n", c);
       exit(3);
   }
 
