@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-#include "casella.h"
 #include "azione.h"
 #include "gioco.h"
 
