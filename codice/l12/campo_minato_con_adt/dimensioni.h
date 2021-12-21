@@ -1,2 +1,2 @@
-#define NRIGHE 4
+#define NRIGHE 6
 #define NCOLONNE 6

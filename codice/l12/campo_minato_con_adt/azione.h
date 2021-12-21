@@ -3,3 +3,5 @@ typedef struct {
   int colonna;
 } Azione;
 
+Azione leggiAzione(void);
+
