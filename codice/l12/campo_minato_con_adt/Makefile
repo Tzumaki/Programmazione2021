@@ -8,7 +8,7 @@ main.o: main.c casella.h azione.h gioco.h
 gioco.h: dimensioni.h
 	touch gioco.h
 
-casella.o: casella.c casella.h 
+casella.o: casella.c casella.h
 	gcc -g -c casella.c
 
 # come sopra

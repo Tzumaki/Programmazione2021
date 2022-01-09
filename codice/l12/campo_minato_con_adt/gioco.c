@@ -3,8 +3,9 @@
 
 #include "azione.h"
 #include "casella.h"
-#include "dimensioni.h"
 #include "gioco.h"
+
+
 
 #define PROBMINA 0.2
 
